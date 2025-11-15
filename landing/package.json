@@ -1,0 +1,20 @@
+{
+  "name": "waitlist",
+  "version": "1.0.0",
+  "description": "Professional waitlist landing page for collecting early access signups.",
+  "main": "script.js",
+  "scripts": {
+    "dev": "echo Opening waitlist page... && start index.html",
+    "build:css": "tailwindcss -i ./styles-new.css -o ./styles-compiled.css --minify",
+    "watch:css": "tailwindcss -i ./styles-new.css -o ./styles-compiled.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  }
+}

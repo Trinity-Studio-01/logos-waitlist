@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Animations - Preserved from original */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+/* Custom animation classes */
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fadeInUp-delay-1 {
+    animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.animate-fadeInUp-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.animate-fadeInUp-delay-3 {
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.animate-fadeInUp-delay-4 {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.animate-fadeIn-delay-5 {
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.4s ease-out;
+}
+
+.animate-bounceIn {
+    animation: bounceIn 0.5s ease-out 0.2s both;
+}
+
+.animate-pulse-loader {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.animate-shake {
+    animation: shake 0.4s ease;
+}
+
+/* Custom gradient background for hero */
+.hero-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 600px;
+    background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.05), transparent 70%);
+    pointer-events: none;
+}
