@@ -2,10 +2,21 @@
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
+const getAuthHeaders = () => {
+  const token = localStorage.getItem('auth_token');
+  return {
+    'Content-Type': 'application/json',
+    'Authorization': token ? `Bearer ${token}` : ''
+  };
+};
+
 export const api = {
   // Waitlist endpoints
   async getAllSignups() {
-    const response = await fetch(`${API_BASE_URL}/waitlist/all`);
+    const response = await fetch(`${API_BASE_URL}/waitlist/all`, {
+      headers: getAuthHeaders(),
+      credentials: 'include'
+    });
     if (!response.ok) throw new Error('Failed to fetch signups');
     return response.json();
   },
@@ -17,7 +28,10 @@ export const api = {
   },
 
   async exportToCSV() {
-    const response = await fetch(`${API_BASE_URL}/waitlist/export`);
+    const response = await fetch(`${API_BASE_URL}/waitlist/export`, {
+      headers: getAuthHeaders(),
+      credentials: 'include'
+    });
     if (!response.ok) throw new Error('Failed to export');
     return response.blob();
   }
