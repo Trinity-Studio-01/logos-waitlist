@@ -2,6 +2,7 @@ import Database from 'better-sqlite3';
 import bcrypt from 'bcryptjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +14,14 @@ const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 minutes
 
 class AdminService {
   constructor() {
-    const dbPath = path.join(__dirname, '../../data/admin.db');
+    // Ensure data directory exists (important for production/Railway)
+    const dataDir = path.join(__dirname, '../../data');
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+      console.log('✅ Created data directory');
+    }
+
+    const dbPath = path.join(dataDir, 'admin.db');
     this.db = new Database(dbPath);
     this.initDatabase();
     console.log('✅ Admin database initialized');

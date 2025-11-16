@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +14,14 @@ class WaitlistService {
 
   init() {
     try {
-      const dbPath = path.join(__dirname, '../..', 'data', 'waitlist.db');
+      // Ensure data directory exists (important for production/Railway)
+      const dataDir = path.join(__dirname, '../..', 'data');
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+        console.log('✅ Created data directory for waitlist');
+      }
+
+      const dbPath = path.join(dataDir, 'waitlist.db');
       this.db = new Database(dbPath);
 
       this.db.exec(`
@@ -36,7 +44,7 @@ class WaitlistService {
         CREATE INDEX IF NOT EXISTS idx_created_at ON waitlist(created_at)
       `);
 
-      console.log('Waitlist database initialized');
+      console.log('✅ Waitlist database initialized');
     } catch (error) {
       console.error('Failed to initialize waitlist database:', error);
       throw error;
