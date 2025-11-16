@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const headlines = [
             "Your Pastor Speaks. LOGOS Finds the Scripture.",
             "Say the Verse, See the Verse, Instantly",
+            "Experience the future of Projection",
             "Real-Time Bible Verses. No More Projection Delays",
             "AI That Understands Sermons, Not Just Spoken Verses.",
             "Your #1 Church Assistant for Real-Time Scripture Detection."
