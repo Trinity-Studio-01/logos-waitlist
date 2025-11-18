@@ -132,12 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const cursor = document.getElementById('headlineCursor');
 
         const headlines = [
-            "Your Pastor Speaks. LOGOS Finds the Scripture.",
-            "Say the Verse, See the Verse, Instantly",
+            "Your Pastor Speaks. Logos Finds the Scripture.",
+            "From word to screen, instantly with Logos",
             "Experience the future of Projection",
             "Real-Time Bible Verses. No More Projection Delays",
-            "AI That Understands Sermons, Not Just Spoken Verses.",
-            "Your #1 Church Assistant for Real-Time Scripture Detection."
+            "AI That Understands Sermons",
+            "Your #1 Media Assistant for Real-Time Scripture Detection."
         ];
 
         let currentHeadlineIndex = 0;
